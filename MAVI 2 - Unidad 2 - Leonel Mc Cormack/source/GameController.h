@@ -7,6 +7,7 @@
 #include "Ball.h"
 #include "Windmill.h"
 #include "Track.h"
+#include "Bumper.h"
 
 class GameController
 {
@@ -21,11 +22,12 @@ private:
 
 	Plunger* plunger;
 
-	std::vector<Ball> balls;
-
-	Windmill* windmill;
+	std::vector<Ball*> balls;
+	std::vector<Windmill*> windmills;
 
 	Track* track;
+
+	std::vector<Bumper*> bumpers;
 
 public:
 

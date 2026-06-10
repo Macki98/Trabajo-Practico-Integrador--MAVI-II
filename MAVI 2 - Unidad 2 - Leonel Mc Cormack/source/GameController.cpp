@@ -14,14 +14,39 @@ GameController::GameController()
 
 	plunger = new Plunger(*physicsWorld.GetB2World());
 
-	windmill = new Windmill(*physicsWorld.GetB2World(),400.0f,300.0f);
+	windmills.push_back(new Windmill(*physicsWorld.GetB2World(), 250.0f, 200.0f));
+	windmills.push_back(new Windmill(*physicsWorld.GetB2World(), 425.0f, 100.0f));
+	windmills.push_back(new Windmill(*physicsWorld.GetB2World(), 600.0f, 200.0f));
 
 	track = new Track(*physicsWorld.GetB2World());
+
+	bumpers.push_back(new Bumper(*physicsWorld.GetB2World(), 230.0f, 300.0f, 15.0f));
+	bumpers.push_back(new Bumper(*physicsWorld.GetB2World(), 330.0f, 350.0f, 15.0f));
+	bumpers.push_back(new Bumper(*physicsWorld.GetB2World(), 430.0f, 400.0f, 15.0f));
+	bumpers.push_back(new Bumper(*physicsWorld.GetB2World(), 530.0f, 350.0f, 15.0f));
+	bumpers.push_back(new Bumper(*physicsWorld.GetB2World(), 630.0f, 300.0f, 15.0f));
 }
 
 GameController::~GameController() 
 {
-	
+
+	for (Ball* b : balls)
+	{
+		delete b;
+	}
+	balls.clear();
+
+	for (Bumper* b : bumpers)
+	{
+		delete b;
+	}
+	bumpers.clear();
+
+	for (Windmill* w : windmills)
+	{
+		delete w;
+	}
+	windmills.clear();
 }
 
 // Loop principal que se ejecutara hasta cerrar la ventana
@@ -63,12 +88,20 @@ void GameController::DrawGame()
 
 	track->Draw();
 
-	plunger->Draw();
-	windmill->Draw();
-
-	for (Ball& b : balls)
+	for (Bumper* b : bumpers)
 	{
-		b.Draw();
+		b->Draw();
+	}
+	plunger->Draw();
+
+	for (Windmill* w : windmills)
+	{
+		w->Draw();
+	}
+
+	for (Ball* b : balls)
+	{
+		b->Draw();
 	}
 
 	EndDrawing();
@@ -76,7 +109,7 @@ void GameController::DrawGame()
 
 void GameController::CreateBall()
 {
-	balls.push_back(Ball(*physicsWorld.GetB2World(), 150.0f, plunger->GetBody()->GetPosition().y - 15.0f, 10.0f, RED));
+	balls.push_back(new Ball(*physicsWorld.GetB2World(), 150.0f, plunger->GetBody()->GetPosition().y - 15.0f, 10.0f, RED));
 	//balls.push_back(Ball(*physicsWorld.GetB2World(), 410.0f, 150.0f, 15.0f, RED));
 }
 

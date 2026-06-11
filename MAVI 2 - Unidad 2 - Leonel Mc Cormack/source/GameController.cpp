@@ -10,7 +10,7 @@ GameController::GameController()
 	SetTargetFPS(60);
 
 	// A su vez, establecemos el piso de nuestro muendo
-	physicsWorld.AddFloor();
+	//physicsWorld.AddFloor();
 
 	plunger = new Plunger(*physicsWorld.GetB2World());
 
@@ -25,6 +25,9 @@ GameController::GameController()
 	bumpers.push_back(new Bumper(*physicsWorld.GetB2World(), 430.0f, 400.0f, 15.0f));
 	bumpers.push_back(new Bumper(*physicsWorld.GetB2World(), 530.0f, 350.0f, 15.0f));
 	bumpers.push_back(new Bumper(*physicsWorld.GetB2World(), 630.0f, 300.0f, 15.0f));
+
+	flippers = new Flipper(*physicsWorld.GetB2World());
+
 }
 
 GameController::~GameController() 
@@ -75,6 +78,7 @@ void GameController::UpdateGame()
 		CreateBall();
 	}
 	plunger->Update();
+	flippers->Update();
 	physicsWorld.Update();
 }
 
@@ -84,7 +88,7 @@ void GameController::DrawGame()
 	BeginDrawing();
 	ClearBackground(background);
 
-	physicsWorld.Draw();
+	//physicsWorld.Draw();
 
 	track->Draw();
 
@@ -99,18 +103,34 @@ void GameController::DrawGame()
 		w->Draw();
 	}
 
+	flippers->Draw();
+
 	for (Ball* b : balls)
 	{
 		b->Draw();
 	}
 
+	DrawUI();
+
 	EndDrawing();
+}
+
+void GameController::DrawUI()
+{
+	// Un título llamativo
+	DrawText("CONTROLES", 730.0f, 20.0f, 20, BLACK);
+
+	// Las instrucciones de juego
+	DrawText("Tecla A : Flipper Izquierdo", 730.0f, 50.0f, 18, LIGHTGRAY);
+	DrawText("Tecla D : Flipper Derecho", 730.0f, 75.0f, 18, LIGHTGRAY);
+	DrawText("Tecla S : Cargar lanzador", 730.0f, 100.0f, 18, LIGHTGRAY);
+	DrawText("Tecla B : Crear bola", 730.0f, 125.0f, 18, LIGHTGRAY);
 }
 
 void GameController::CreateBall()
 {
 	balls.push_back(new Ball(*physicsWorld.GetB2World(), 150.0f, plunger->GetBody()->GetPosition().y - 15.0f, 10.0f, RED));
-	//balls.push_back(Ball(*physicsWorld.GetB2World(), 410.0f, 150.0f, 15.0f, RED));
+
 }
 
 

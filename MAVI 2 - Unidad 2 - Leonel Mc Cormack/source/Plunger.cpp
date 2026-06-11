@@ -46,7 +46,7 @@ Plunger::Plunger(b2World& _world)
 
 void Plunger::Update()
 {
-	if (IsKeyDown(KEY_DOWN))
+	if (IsKeyDown(KEY_S))
 	{
 		pistonBody->SetAwake(true);
 
@@ -56,7 +56,7 @@ void Plunger::Update()
 		pistonBody->SetLinearVelocity(b2Vec2(0.0f, 10.0f));
 	}
 
-	if (IsKeyReleased(KEY_DOWN))
+	if (IsKeyReleased(KEY_S))
 	{
 		pistonBody->SetAwake(true);
 		

@@ -8,6 +8,7 @@
 #include "Windmill.h"
 #include "Track.h"
 #include "Bumper.h"
+#include "Flipper.h"
 
 class GameController
 {
@@ -29,6 +30,9 @@ private:
 
 	std::vector<Bumper*> bumpers;
 
+	Flipper* flippers;
+	
+
 public:
 
 	GameController();
@@ -40,6 +44,7 @@ public:
 	void UpdateGame();
 	void DrawGame();
 
+	void DrawUI();
 	void CreateBall();
 };
 

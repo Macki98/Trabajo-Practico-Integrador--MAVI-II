@@ -7,7 +7,6 @@ class Ball
 {
 private:
 
-	// Definimos las propiedades iniciales del cuerpo
 	b2Body* ballBody;
 	float radius;
 	Color color;

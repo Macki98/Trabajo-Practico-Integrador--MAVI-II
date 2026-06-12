@@ -12,12 +12,13 @@ Windmill::Windmill(b2World& _world, float _x, float _y)
 	axisShape.SetAsBox(2.5f, 2.5f);
 	staticAxis->CreateFixture(&axisShape,0.0f);
 
-	// Aspa A
+	// Creamos la Definicion que tendran las aspas del molino
 	b2BodyDef poleADef;
 	poleADef.type = b2_dynamicBody;
 	poleADef.position.Set(_x, _y);
 	pole = _world.CreateBody(&poleADef);
 
+	// Asignamos una forma a cada aspa
 	b2PolygonShape shapeA;
 	shapeA.SetAsBox(40.0f, 5.0f);
 	pole->CreateFixture(&shapeA, 0.1f);
@@ -39,7 +40,7 @@ Windmill::Windmill(b2World& _world, float _x, float _y)
 
 void Windmill::Draw()
 {
-	// AspaA
+	// Aspa A
 	b2Vec2 posA = pole->GetPosition();
 	float angleA = pole->GetAngle() * RAD2DEG;
 
@@ -48,7 +49,7 @@ void Windmill::Draw()
 
 	DrawRectanglePro(rectA, centerA, angleA, MAROON);
 
-	
+	// Aspa B
 	Rectangle rectB = { posA.x,posA.y,10.f,80.f };
 	Vector2 centerB = { 10.0f / 2, 80.0f / 2 };
 

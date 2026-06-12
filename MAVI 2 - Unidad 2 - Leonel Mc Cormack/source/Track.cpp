@@ -9,7 +9,7 @@ Track::Track(b2World& _world)
 	sizeExit = { 300.0f, 10.0f };
 
 
-	// 1. Techo
+	// Techo
 	b2BodyDef topDef;
 	topDef.type = b2_staticBody;
 	topDef.position.Set(420.0f, 5.0f);
@@ -21,7 +21,7 @@ Track::Track(b2World& _world)
 	
 	top->CreateFixture(&topShape, 0.0f);
 
-	// 2. Pared externa Izq
+	// Pared externa Izq
 	b2BodyDef wallRDef;
 	wallRDef.type = b2_staticBody;
 	wallRDef.position.Set(125.0f, 300.0f);
@@ -33,7 +33,7 @@ Track::Track(b2World& _world)
 	
 	wallR->CreateFixture(&wallRShape, 0.0f);
 
-	// 3. Pared interna Der
+	// Pared interna Der
 	b2BodyDef wallLDef;
 	wallLDef.type = b2_staticBody;
 	wallLDef.position.Set(175.0f, 350.0f);
@@ -45,7 +45,7 @@ Track::Track(b2World& _world)
 
 	wallL->CreateFixture(&wallLShape,0.0f);
 
-	// 4. Corner
+	// Corner
 	b2BodyDef edgeDef;
 	edgeDef.type = b2_staticBody;
 	edgeDef.position.Set(155.0f, 30.f);
@@ -59,7 +59,7 @@ Track::Track(b2World& _world)
 	
 	edge->CreateFixture(&edgeShape, 0.0f);
 
-	// 5. Pared externa Der
+	// Pared externa Der
 	b2BodyDef externDef;
 	externDef.type = b2_staticBody;
 	externDef.position.Set(715.0f, 300.0f);
@@ -70,7 +70,7 @@ Track::Track(b2World& _world)
 
 	externWallL->CreateFixture(&externShape, 0.0f);
 
-	// 6. Salidas
+	// Salidas
 	// salida 1
 	b2BodyDef exit1Def;
 	exit1Def.type = b2_staticBody;
@@ -115,19 +115,19 @@ void Track::Draw()
 	Vector2 centerExtern = { sizeWallR.x / 2.0f, sizeWallR.y / 2.0f };
 	DrawRectanglePro(rectExtern, centerExtern, 0.0f, LIGHTGRAY);
 
-	// ---- 1. DIBUJAR PARED IZQ ----
+	// Pared Izquierda
 	b2Vec2 posR = wallR->GetPosition();
 	Rectangle rectR = { posR.x, posR.y, sizeWallR.x, sizeWallR.y };
 	Vector2 centerR = { sizeWallR.x / 2.0f, sizeWallR.y / 2.0f };
 	DrawRectanglePro(rectR, centerR, 0.0f, LIGHTGRAY);
 
-	// ---- 2. DIBUJAR PARED DER ----
+	// Pared Derecha interna
 	b2Vec2 posL = wallL->GetPosition();
 	Rectangle rectL = { posL.x, posL.y, sizeWallL.x, sizeWallL.y };
 	Vector2 centerL = { sizeWallL.x / 2.0f, sizeWallL.y / 2.0f };
 	DrawRectanglePro(rectL, centerL, 0.0f, LIGHTGRAY);
 
-	// ---- 3. DIBUJAR CORNER ----
+	// Corner
 	b2Vec2 posEdge = edge->GetPosition();
 	float angleEdge = edge->GetAngle() * RAD2DEG;
 	Rectangle rectEdge = { posEdge.x, posEdge.y, sizeEdge.x, sizeEdge.y };

@@ -31,13 +31,4 @@ void Ball::Draw()
 	b2Vec2 pos = ballBody->GetPosition();
 
 	DrawCircle(pos.x, pos.y, radius, color);
-
-	float angle = ballBody->GetAngle();
-	Vector2 pointLine =
-	{
-		pos.x + cosf(angle) * radius,
-		pos.y + sinf(angle) * radius
-	};
-
-	DrawLineEx({ pos.x,pos.y }, pointLine, 2.0f, BLACK);
 }

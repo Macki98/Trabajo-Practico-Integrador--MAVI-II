@@ -13,10 +13,7 @@
 class GameController
 {
 private:
-	
-	/*
-		Le damos un atributo World para crear ese mundo fisico
-	*/
+
 	World physicsWorld;
 
 	Color background = { 110, 100, 215, 255 };

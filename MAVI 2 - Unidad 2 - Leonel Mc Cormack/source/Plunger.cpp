@@ -29,7 +29,7 @@ Plunger::Plunger(b2World& _world)
 	fixtureDef.density = 0.01f;
 	pistonBody->CreateFixture(&fixtureDef);
 	
-	// Regla 2: Riel (prismatic joint)
+	// Riel (prismatic joint)
 	b2PrismaticJointDef prismaticDef;
 	b2Vec2 axisY(0.0f, 1.0f);
 

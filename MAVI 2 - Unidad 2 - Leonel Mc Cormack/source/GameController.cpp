@@ -6,11 +6,9 @@ GameController::GameController()
 	const int screenWidth = 1000;
 	const int screenHeight = 600;
 
-	InitWindow(screenWidth, screenHeight, "MAVI II - Unidad 1 - Leonel Mc Cormack");
+	InitWindow(screenWidth, screenHeight, "MAVI II - Trabajo Practico Integrador - Leonel Mc Cormack");
 	SetTargetFPS(60);
 
-	// A su vez, establecemos el piso de nuestro muendo
-	//physicsWorld.AddFloor();
 
 	plunger = new Plunger(*physicsWorld.GetB2World());
 
@@ -50,6 +48,10 @@ GameController::~GameController()
 		delete w;
 	}
 	windmills.clear();
+
+	delete plunger;
+	delete track;
+	delete flippers;
 }
 
 // Loop principal que se ejecutara hasta cerrar la ventana
@@ -88,8 +90,6 @@ void GameController::DrawGame()
 	BeginDrawing();
 	ClearBackground(background);
 
-	//physicsWorld.Draw();
-
 	track->Draw();
 
 	for (Bumper* b : bumpers)
@@ -117,10 +117,9 @@ void GameController::DrawGame()
 
 void GameController::DrawUI()
 {
-	// Un título llamativo
+	
 	DrawText("CONTROLES", 730.0f, 20.0f, 20, BLACK);
 
-	// Las instrucciones de juego
 	DrawText("Tecla A : Flipper Izquierdo", 730.0f, 50.0f, 18, LIGHTGRAY);
 	DrawText("Tecla D : Flipper Derecho", 730.0f, 75.0f, 18, LIGHTGRAY);
 	DrawText("Tecla S : Cargar lanzador", 730.0f, 100.0f, 18, LIGHTGRAY);

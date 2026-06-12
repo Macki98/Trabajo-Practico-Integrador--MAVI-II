@@ -29,6 +29,5 @@ void Bumper::Draw()
 
 	DrawCircle(pos.x, pos.y, radius, color);
 
-	//DrawCircleLines((pos.x + 2.0f), (pos.y + 2.0f), radius, WHITE);
 	DrawCircle(pos.x, pos.y, radius * 0.4f, RED);
 }

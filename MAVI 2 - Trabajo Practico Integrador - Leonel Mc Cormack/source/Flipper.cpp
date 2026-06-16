@@ -27,7 +27,7 @@ Flipper::Flipper(b2World& _wordl)
 
 	b2FixtureDef flipper1Fixture;
 	flipper1Fixture.shape = &flipper1Shape;
-	flipper1Fixture.density = 1.0f;
+	flipper1Fixture.density = 2.0f;
 	flipper1Fixture.friction = 0.1f;
 	flipper1Fixture.restitution = 0.1f;
 
@@ -48,7 +48,7 @@ Flipper::Flipper(b2World& _wordl)
 
 	b2FixtureDef flipper2Fixture;
 	flipper2Fixture.shape = &flipper2Shape;
-	flipper2Fixture.density = 1.0f;
+	flipper2Fixture.density = 2.0f;
 	flipper2Fixture.friction = 0.1f;
 	flipper2Fixture.restitution = 0.1f;
 
@@ -93,7 +93,7 @@ void Flipper::Update()
 	{
 		flipper1Body->SetAwake(true);
 
-		revolute1Joint->SetMotorSpeed(-5000.0f);
+		revolute1Joint->SetMotorSpeed(-5000000.0f);
 	}
 	else 
 	{ 
@@ -104,7 +104,7 @@ void Flipper::Update()
 	{
 		flipper2Body->SetAwake(true);
 
-		revolute2Joint->SetMotorSpeed(5000.0f);
+		revolute2Joint->SetMotorSpeed(5000000.0f);
 	}
 	else 
 	{
